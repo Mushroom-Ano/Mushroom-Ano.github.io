@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ano — games & stuff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8e2d0;
+    --paper-shade: #d6cfb9;
+    --ink: #1a1612;
+    --ink-soft: #3d342a;
+    --blood: #8b1a1a;
+    --bruise: #4a1d3f;
+    --moss: #4a5c2a;
+    --rust: #a04020;
+    --pumpkin: #c96820;
+    --bone: #f2ead8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 19px;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(74, 29, 63, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(139, 26, 26, 0.04) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+    position: relative;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+  }
+
+  h1 {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 0.9;
+    margin-bottom: 0.5rem;
+    transform: rotate(-2deg);
+    display: inline-block;
+    position: relative;
+  }
+
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--blood);
+    z-index: -1;
+    border-radius: 100% 50% 100% 30%;
+    opacity: 0.6;
+  }
+
+  .subtitle {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+    margin-top: 1rem;
+  }
+
+  .blink {
+    display: inline-block;
+    color: var(--blood);
+  }
+
+  .eye-decor {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    font-size: 2.5rem;
+    color: var(--bruise);
+    opacity: 0.5;
+  }
+  .eye-1 { top: -10px; left: 10%; transform: rotate(-15deg); }
+  .eye-2 { top: 30px; right: 8%; transform: rotate(20deg); }
+
+  .intro {
+    background: var(--bone);
+    border: 2px solid var(--ink);
+    padding: 1.5rem 1.8rem;
+    border-radius: 18px 4px 22px 6px;
+    box-shadow: 4px 5px 0 var(--ink);
+    margin-bottom: 3.5rem;
+    transform: rotate(-0.5deg);
+    position: relative;
+  }
+
+  .intro p {
+    margin-bottom: 0.7rem;
+  }
+  .intro p:last-child { margin-bottom: 0; }
+
+  .intro .wave {
+    font-size: 1.6rem;
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2.5s ease-in-out infinite;
+  }
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(14deg); }
+    20%, 40% { transform: rotate(-8deg); }
+  }
+
+  .intro::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: 30px;
+    width: 50px; height: 16px;
+    background: rgba(139, 26, 26, 0.5);
+    transform: rotate(-3deg);
+    border-radius: 2px;
+  }
+
+  h2 {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transform: rotate(-1deg);
+    position: relative;
+  }
+
+  h2 .marker {
+    color: var(--blood);
+    margin-right: 0.4rem;
+  }
+
+  .games {
+    margin-bottom: 4rem;
+  }
+
+  .game {
+    background: var(--bone);
+    border: 2px solid var(--ink);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px 16px 6px 18px;
+    box-shadow: 3px 4px 0 var(--ink);
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+  }
+
+  .game:nth-child(odd) { transform: rotate(-0.7deg); border-radius: 14px 6px 18px 4px; }
+  .game:nth-child(even) { transform: rotate(0.6deg); }
+
+  .game:hover {
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 5px 7px 0 var(--blood);
+  }
+
+  .game-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .game-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .game-title .num {
+    color: var(--blood);
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+  }
+
+  .game-tech {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .game-desc {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .game-link {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    color: var(--blood);
+    letter-spacing: 0.08em;
+    border-top: 1px dashed var(--ink-soft);
+    padding-top: 0.6rem;
+    margin-top: 0.6rem;
+  }
+
+  .game-link .play {
+    background: var(--moss);
+    color: var(--bone);
+    padding: 1px 8px;
+    margin-right: 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .game.featured::after {
+    content: '★ favorite';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--blood);
+    color: var(--bone);
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    padding: 2px 12px;
+    transform: rotate(4deg);
+    border: 2px solid var(--ink);
+    border-radius: 20px;
+  }
+
+  .about {
+    margin-bottom: 4rem;
+  }
+
+  .about-content {
+    background: var(--bone);
+    border: 2px solid var(--ink);
+    padding: 1.5rem 1.8rem;
+    border-radius: 6px 18px 4px 16px;
+    box-shadow: 3px 4px 0 var(--ink);
+    transform: rotate(0.5deg);
+  }
+
+  .about-content p {
+    margin-bottom: 0.8rem;
+  }
+  .about-content p:last-child { margin-bottom: 0; }
+
+  .about-content .scrawl {
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    color: var(--blood);
+  }
+
+  .contact {
+    text-align: center;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-link {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--bone);
+    border: 2px solid var(--ink);
+    padding: 0.4rem 1.3rem;
+    border-radius: 30px 8px 28px 6px;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: all 0.15s ease;
+  }
+
+  .contact-link:hover {
+    background: var(--blood);
+    color: var(--bone);
+    transform: translateY(-2px);
+    box-shadow: 4px 5px 0 var(--ink);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px dashed var(--ink-soft);
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    opacity: 0.7;
+  }
+
+  footer .skull {
+    font-size: 1.2rem;
+    color: var(--bruise);
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 2rem 1rem 3rem; }
+    h1 { font-size: 3.2rem; }
+    .intro, .about-content { padding: 1.2rem 1.3rem; }
+    .game { padding: 1rem 1.2rem; }
+    .game-title { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header>
+    <span class="eye-decor eye-1">👁</span>
+    <span class="eye-decor eye-2">👁</span>
+    <h1>hi, i'm ano</h1>
+    <p class="subtitle">i make games <span class="blink">.</span><span class="blink">.</span><span class="blink">.</span> sometimes they work</p>
+  </header>
+
+  <div class="intro">
+    <p><span class="wave">👋</span> welcome to my little corner of the internet.</p>
+    <p>i'm a software engineer & game developer. i mess around with unity, c++, and flutter — usually building stuff that's a bit weird, a bit broken, and (hopefully) a bit fun.</p>
+    <p>have a look around. all the projects below are real, on github, and a few are playable in your browser right now.</p>
+  </div>
+
+  <section class="games">
+    <h2><span class="marker">~</span>the games<span class="marker">~</span></h2>
+
+    <a href="https://mushroom-ano.github.io/Non-Euclidian-Geometry-Game/" target="_blank" class="game featured">
+      <div class="game-head">
+        <span class="game-title"><span class="num">01</span>non-euclidean geometry game</span>
+        <span class="game-tech">unity · c#</span>
+      </div>
+      <p class="game-desc">a 3rd person game where geometry doesn't behave. corridors loop. rooms are bigger inside. walls go on forever. it's playable in the browser if you fancy a quick existential crisis.</p>
+      <p class="game-link"><span class="play">play</span> mushroom-ano.github.io/Non-Euclidian-Geometry-Game</p>
+    </a>
+
+    <a href="https://mushroom-ano.github.io/KabalMinigame/" target="_blank" class="game">
+      <div class="game-head">
+        <span class="game-title"><span class="num">02</span>kabal's minigames</span>
+        <span class="game-tech">unity · c# · llm</span>
+      </div>
+      <p class="game-desc">a little monster called kabal challenges you to minigames. you can also have an actual conversation with him — there's a local llm wired in if you set one up. it's silly. that's the point.</p>
+      <p class="game-link"><span class="play">play</span> mushroom-ano.github.io/KabalMinigame</p>
+    </a>
+
+    <a href="https://github.com/Mushroom-Ano/CentipedeCPP" target="_blank" class="game">
+      <div class="game-head">
+        <span class="game-title"><span class="num">03</span>centipede</span>
+        <span class="game-tech">c++ · sfml</span>
+      </div>
+      <p class="game-desc">a centipede that follows your mouse around your actual desktop in a transparent always-on-top window. eats apples. grows. gets hats. inverse kinematics doing all the work.</p>
+      <p class="game-link">github.com/Mushroom-Ano/CentipedeCPP</p>
+    </a>
+
+    <a href="https://github.com/Mushroom-Ano/Four-Souls-Card-Builder" target="_blank" class="game">
+      <div class="game-head">
+        <span class="game-title"><span class="num">04</span>four souls card builder</span>
+        <span class="game-tech">flutter · dart</span>
+      </div>
+      <p class="game-desc">a tool for making custom cards for the binding of isaac: four souls card game. when you're sick of the base set. works on basically every platform.</p>
+      <p class="game-link">github.com/Mushroom-Ano/Four-Souls-Card-Builder</p>
+    </a>
+  </section>
+
+  <section class="about">
+    <h2><span class="marker">~</span>about me<span class="marker">~</span></h2>
+    <div class="about-content">
+      <p>i'm <span class="scrawl">ano lawa</span> — software engineer by day, game dev by night (and also sometimes by day).</p>
+      <p>mostly i work in unity & c#, but i'll happily reach for c++ when i need to get closer to the metal, or flutter when something needs to run everywhere at once.</p>
+      <p>outside of code i like card games, gaming, and 3d modelling in blender. i don't really touch grass.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2><span class="marker">~</span>say hi<span class="marker">~</span></h2>
+    <div class="contact-links">
+      <a href="mailto:anolawa@gmail.com" class="contact-link">email</a>
+      <a href="https://github.com/Mushroom-Ano" target="_blank" class="contact-link">github</a>
+      <a href="https://www.linkedin.com/in/ano-lawa/" target="_blank" class="contact-link">linkedin</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>made by ano · <span class="skull">☠</span> · thanks for stopping by</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
