@@ -81,6 +81,28 @@
 
   .about p { color: #aaa; }
 
+  .gallery-label {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 24px 0 10px;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid #2a2a2a;
+    display: block;
+  }
+  @media(max-width:500px){ .gallery { grid-template-columns: 1fr 1fr; } }
+
   .contact-links { font-size: 14px; }
   .contact-links a { margin-right: 16px; }
 
@@ -121,9 +143,13 @@
     <h4>What's Next</h4>
     <p>Now that I've got a first pass under my belt, I want to refine the level geometry and add proper gun feedback — recoil, hit reactions, sound.</p>
   </div>
+  <p class="gallery-label">Level art — all made by me</p>
+  <div class="gallery">
+    <img src="images/fps-art-1.png" alt="Living room with static TV">
+    <img src="images/fps-art-2.png" alt="Kitchen area">
+    <img src="images/fps-art-3.png" alt="Hallway and corridor">
+  </div>
 </div>
-
-<!-- 02 NON-EUCLIDEAN -->
 <div class="game">
   <img src="images/non-euclidean.gif" alt="Non-Euclidean Geometry Game">
   <h3>non-euclidean geometry game</h3>
