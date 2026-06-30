@@ -11,7 +11,7 @@
     color: #ccc;
     font-family: monospace;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
   }
   a { color: #b388ff; }
   .page { max-width: 720px; margin: 0 auto; padding: 20px; }
@@ -26,51 +26,58 @@
 
   h2 { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: lowercase; margin: 0 0 30px; }
 
-  .game { margin-bottom: 50px; }
+  .game {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid #1e1e1e;
+  }
+  .game:last-child { border-bottom: none; margin-bottom: 40px; }
   .game img {
     width: 100%;
-    max-height: 380px;
+    max-height: 400px;
     object-fit: cover;
     display: block;
     border: 1px solid #2a2a2a;
   }
   .game h3 {
     color: #eee;
-    font-size: 18px;
-    margin: 14px 0 4px;
+    font-size: 20px;
+    margin: 20px 0 6px;
   }
   .game .stack {
     color: #666;
     font-size: 12px;
-    margin: 0 0 8px;
+    margin: 0 0 14px;
   }
   .game .pitch {
     color: #aaa;
-    margin: 0 0 10px;
+    margin: 0 0 16px;
+    line-height: 1.7;
   }
   .game .links {
     font-size: 13px;
-    margin: 0 0 14px;
+    margin: 0 0 24px;
   }
   .game .links a { margin-right: 14px; }
 
   .details {
     border-left: 2px solid #2a2a2a;
-    padding-left: 14px;
-    margin-top: 12px;
+    padding-left: 18px;
+    margin-top: 20px;
   }
   .details h4 {
     color: #b388ff;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 12px 0 4px;
+    margin: 20px 0 6px;
   }
   .details h4:first-child { margin-top: 0; }
   .details p {
     color: #999;
-    margin: 0 0 6px;
+    margin: 0 0 4px;
     font-size: 14px;
+    line-height: 1.7;
   }
 
   .about p { color: #aaa; }
@@ -99,7 +106,26 @@
 <hr>
 <h2>~ the games ~</h2>
 
-<!-- 01 NON-EUCLIDEAN -->
+<!-- 01 DIY DEATHMATCH -->
+<div class="game">
+  <img src="images/diy-deathmatch.gif" alt="DIY Deathmatch FPS demo">
+  <h3>diy deathmatch</h3>
+  <div class="stack">unity · c# · fps · level design</div>
+  <p class="pitch">my most ambitious project yet — a first person shooter demo built almost entirely from scratch, down to a viewmodel made from a photo of my own hand holding a toy gun.</p>
+  <div class="links">
+    <a href="https://github.com/Mushroom-Ano" target="_blank">↗ source</a>
+  </div>
+  <div class="details">
+    <h4>What I Liked</h4>
+    <p>Getting creative with the gun — I used my own picture of a toy gun in my hand as the first person viewmodel instead of grabbing an asset pack. Everything in this project is homemade.</p>
+    <h4>Challenges Faced</h4>
+    <p>Level design, full stop. I had zero experience blocking out a map, and every piece of art was made by me, which was incredibly time consuming.</p>
+    <h4>What's Next</h4>
+    <p>Now that I've got a first pass under my belt, I want to refine the level geometry and add proper gun feedback — recoil, hit reactions, sound.</p>
+  </div>
+</div>
+
+<!-- 02 NON-EUCLIDEAN -->
 <div class="game">
   <img src="images/non-euclidean.gif" alt="Non-Euclidean Geometry Game">
   <h3>non-euclidean geometry game</h3>
@@ -118,25 +144,6 @@
     <p>The effects were pretty basic so this one went well all together — map design was the hardest part, getting layouts that sell the loop without giving the trick away.</p>
     <h4>What's Next</h4>
     <p>Implementing proper lighting and more detail to make the spaces feel real instead of grey-boxed.</p>
-  </div>
-</div>
-
-<!-- 02 DIY DEATHMATCH -->
-<div class="game">
-  <img src="images/diy-deathmatch.gif" alt="DIY Deathmatch FPS demo">
-  <h3>diy deathmatch</h3>
-  <div class="stack">unity · c# · fps · level design</div>
-  <p class="pitch">my most ambitious project yet — a first person shooter demo built almost entirely from scratch, down to a viewmodel made from a photo of my own hand holding a toy gun.</p>
-  <div class="links">
-    <a href="https://github.com/Mushroom-Ano" target="_blank">↗ source</a>
-  </div>
-  <div class="details">
-    <h4>What I Liked</h4>
-    <p>Getting creative with the gun — I used my own picture of a toy gun in my hand as the first person viewmodel instead of grabbing an asset pack. Everything in this project is homemade.</p>
-    <h4>Challenges Faced</h4>
-    <p>Level design, full stop. I had zero experience blocking out a map, and every piece of art was made by me, which was incredibly time consuming.</p>
-    <h4>What's Next</h4>
-    <p>Now that I've got a first pass under my belt, I want to refine the level geometry and add proper gun feedback — recoil, hit reactions, sound.</p>
   </div>
 </div>
 
